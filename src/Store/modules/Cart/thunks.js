@@ -3,11 +3,15 @@ import { cartActions } from "./actions";
 export const addCartThunks = (products) => (dispatch, state) => {
   const { cartReduces } = state();
 
-  const localProduct = JSON.parse(localStorage.getItem("cart")) || [];
-  localProduct.push(products);
-  localStorage.setItem("cart", JSON.stringify(localProduct));
+  const noRepeat = cartReduces.includes(products);
 
-  dispatch(cartActions([...cartReduces, products]));
+  if (!noRepeat) {
+    const localProduct = JSON.parse(localStorage.getItem("cart")) || [];
+    localProduct.push(products);
+    localStorage.setItem("cart", JSON.stringify(localProduct));
+
+    dispatch(cartActions([...cartReduces, products]));
+  }
 };
 
 export const removeCartThunks = (id) => (dispatch, state) => {
