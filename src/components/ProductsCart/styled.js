@@ -48,7 +48,7 @@ export const Card = styled.div`
   padding: 23px 10px;
   font-weight: 300;
   line-height: 1.3;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 250px;
   background-color: #fff;
